@@ -1,11 +1,4 @@
-# Show now
-
-## Important Note
-Before using this template, read the template guide [here](https://docs.google.com/document/d/1F68KceOe2lUi3KDVcBEcOxwwRsZDNLmkFFYrIAcV6BQ/edit?usp=sharing)
-
-
-
->Turnig Home Challenge 
+Turnig Home Challenge 
 
 
  Task 1: Register User
@@ -40,9 +33,9 @@ Task 6 : Detail of Product
 Tske 7: Search product 
       i)Product can search with Name 
       ii)Search with slide(As you Slide change product will Show)
-   
+   =================================================================================================
 
-===========================================================================================================================
+
 
  
 
