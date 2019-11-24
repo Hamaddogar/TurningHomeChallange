@@ -33,7 +33,7 @@ Task 6 : Detail of Product
 Tske 7: Search product 
       i)Product can search with Name 
       ii)Search with slide(As you Slide change product will Show)
-   =================================================================================================
+   ==================================================================================================
 
 
 
