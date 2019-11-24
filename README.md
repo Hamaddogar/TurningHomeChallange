@@ -1,11 +1,11 @@
 Turnig Home Challenge 
 
-
  Task 1: Register User
        i)Register User ( Email,Name,Password ) Validation
        ii)  Already Existing User Cannot do Register Again yourself(Error Message  user Validation)
        iii) Backend Save  confirmation Message  
   ====================
+  
 Task 2: Login User
        i) (Email,password) validation  (Front hand and Backend ) validation and show password
        
