@@ -9,27 +9,20 @@ import {
   Fab,
   TextField
 } from '@material-ui/core';
-import Header from '../Header';
-import {Slider} from 'material-ui-slider';
-
+import MainHeader from '../../main/mainHeader/mainHeader'
 import { withRouter } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
-
 import withWidth from "@material-ui/core/withWidth/withWidth";
 import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
 import Close from '@material-ui/icons/Close';
-
 import styles from './styles';
-
-
 import {Container, Section} from '../../../components/Layout';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import Banner from '../../../components/Banner';
 import SubscribeBar from '../../../components/SubscribeBar';
-
 import './styles.css';
 
 
@@ -52,7 +45,7 @@ class SearchDisplay extends Component {
   };
     render() 
     {
-    
+      console.log(this.props.searchproduct)
       const { classes } = this.props;
   
       var  result =this.props.searchproduct.data.filter((productprice) => { 
@@ -101,10 +94,13 @@ class SearchDisplay extends Component {
             </Link>
           </div>
           </div>
+          console.log(result)
       })
         return (
           <div className={classes.root}>
-            <Header/>
+          
+           <MainHeader/>
+       <center><h3>you have search "{this.props.searchproduct.whatsearch}"</h3></center> 
                 <Container>
                         <Section>
                             <div className="flex mb-4 contentHolder">

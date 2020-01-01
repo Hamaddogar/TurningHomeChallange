@@ -6,8 +6,10 @@ import Toolbar from "@material-ui/core/Toolbar/index";
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 import styles from './styles';
+import './style.css';
 import Button from "@material-ui/core/Button";
 import * as alertActions from "../../../../store/actions/alerts";
+ import Profile from './../../.././../components/UserProfile/userProfile'
 
 const links = [{
     title: 'Daily Deals',
@@ -23,16 +25,34 @@ const links = [{
 class TopBar extends React.Component {
 
     render() {
-
+ console.log(this.props.login.length)
         const {
             classes,
         } = this.props;
 
         return (
-            <AppBar className={classes.topBar}>
+        
                 <Toolbar className={classes.toolbar}>
-                    <div className={classes.authText + ' ' + classes.divTopBar}>
-                            <span>Hi!</span>
+                   
+                   <div className={classes.linksContainer}>
+                            {
+                                links.map((item, index) => (
+                                    <Button key={index} classes={{root: classes.button}}>
+                                        <Link to={item.link} className={classes.navLink}>
+                                            {item.title}
+                                        </Link>
+                                    </Button>
+                                ))
+                            }
+                           
+                        </div>
+                  
+                  <div className="movetocenter">
+                   <div   className={classes.authText + ' ' + classes.divTopBar }>
+
+                        {this.props.login.length!=0?<div><span>Hi!</span>{this.props.login.uname} <Link to="/Profile">
+                              
+                            </Link></div>:<div> <span>Hi!</span>
                             <Link onClick={() => {
                               this.props.showAuth(false)
                               }} className={classes.authLink} id="btnSignIn" style={{color: 'red'}}>
@@ -43,56 +63,12 @@ class TopBar extends React.Component {
                               this.props.showAuth(true)
                               }} className={classes.authLink} id="btnRegister" style={{color: 'red'}}>
                               Register
-                          </Link>
+                          </Link></div>}
+                           
                     </div>
-                    <div className={classes.authText + ' ' + classes.divTopBar}>
-                            <span>Hi Charles!</span>
-                            <Link className={classes.authLink} style={{color: 'red'}}>
-                            My Profile
-                            </Link>
-                            <span>|</span>
-                            <Link className={classes.authLink} id="btnLogout" style={{color: 'red'}}>
-                             Logout
-                            </Link>
-                    </div>
-                    <Hidden mdDown className={classes.divTopBar}>
-                        <div className={classes.linksContainer}>
-                            {
-                                links.map((item, index) => (
-                                    <Button key={index} classes={{root: classes.button}}>
-                                        <Link to={item.link} className={classes.navLink}>
-                                            {item.title}
-                                        </Link>
-                                    </Button>
-                                ))
-                            }
-                        </div>
-                    </Hidden>
-                    <Hidden mdDown className={classes.divTopBar}>
-                      <div className={classes.currencyIconContainer}>
-                          <span className="flag-icon flag-icon-gb"/>
-                      </div>
-                      <div className={classes.currencyContainer}>
-                          <div className={classes.currencyText}>GBR</div>
-                      </div>
-                    </Hidden>
-                    <div className={classes.divTopBar}>
-                        <div className={classes.iconContainer} id="menuCartLink" onClick={() => {
-                            this.props.showCart()
-                        }}>
-                            <Badge
-                                classes={{badge: classes.badge}}
-                                badgeContent={1}
-                                color="red"
-                                id="menuCartQuantity"
-                            >
-                                <img alt="Shopping Cart Icon" src="/assets/icons/shopping-cart-black.svg"/>
-                            </Badge>
-                        </div>
-                        <div className={classes.yourBag} style={{color: 'black'}}>Your Bag: $<span id="menuCartTotalPrice">14.99</span></div>
                     </div>
                 </Toolbar>
-            </AppBar>
+       
         );
     }
 }
@@ -107,6 +83,11 @@ function mapDispatchToProps(dispatch) {
         showAuth: alertActions.showAuth
     }, dispatch);
 }
+function mapStateToProps({ loginreducers }) {
+    return {
+      login: loginreducers
+    }
+  }
 
 
-export default withStyles(styles, {withTheme: true})(connect(null, mapDispatchToProps)(TopBar));
+export default withStyles(styles, {withTheme: true})(connect(mapStateToProps, mapDispatchToProps)(TopBar));

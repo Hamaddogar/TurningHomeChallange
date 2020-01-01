@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import styles from './styles';
 import UserProduct from '../UserProduct/UserProduct';
 import AddProduct from '../AddProduct/AddproductAlert';
+import Addslider from '../slider/Add Slider/slideralert'
+
 
 
 
@@ -53,7 +55,7 @@ class Profile extends React.Component {
 
     console.log(this.props.open)
     if (this.state.loading) {
-      return <div>loading......</div>
+      return <div><center><img src="http://files.nn45.com/AAPL/loaders/Teddy%20Bear%20Loading.gif" width="700" className="loading-images-upper"/></center></div>
 
     }
     else {
@@ -84,7 +86,7 @@ class Profile extends React.Component {
                   <div class="profile-userbuttons">
                     <button type="button" class="btn btn-success btn-sm" onClick={this.logout}>Logout</button>
                     <br/>   <br/>
-
+                    <Addslider/>
                    <AddProduct/>
                   </div>
 

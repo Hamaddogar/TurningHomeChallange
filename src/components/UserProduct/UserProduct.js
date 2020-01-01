@@ -77,13 +77,13 @@ class UserProduct extends Component {
                     </div>
 
 
-                    <Link to={'/productdetail/' + product._id}>
+                    {/* <Link to={'/productdetail/' + product._id}>
                       <div className={`product-card-link ${classes.addButtonContainer}`}>
                         <Fab color="primary" size="small" className={classes.addButton}>
                           <span className={classes.addButtonText}>View</span>
                         </Fab>
                       </div>
-                    </Link>
+                    </Link> */}
                 </div>
                   </div>
                 </div>

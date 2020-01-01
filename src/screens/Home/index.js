@@ -32,6 +32,7 @@ import styles from './styles';
 import {Container, Section} from '../../components/Layout';
 import ListProduct from '../../components/ListProduct';
 import Banner from '../../components/Banner';
+import Sliderpic from '../../components/slider/slider'
 import SubscribeBar from '../../components/SubscribeBar';
 import './styles.css';
 
@@ -54,6 +55,7 @@ class Home extends Component {
         let currentProducts =  products;
 
         return (
+            <div><Sliderpic/>
             <div className={classes.root}>
                 <Container>
                         <Section>
@@ -245,6 +247,7 @@ class Home extends Component {
                             <SubscribeBar/>
                         </Section>
                     </Container>
+            </div>
             </div>
         )
     }

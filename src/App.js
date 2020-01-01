@@ -7,11 +7,15 @@ import {create} from 'jss';
 import jssExtend from 'jss-extend';
 import history from './history';
 import store from './store';
+
+
 import AppContext from './AppContext';
 import Theme from './components/System/Theme';
 import routes from './config/routes';
 import LayoutHandler from './layouts/LayoutHandler';
+import { PersistGate } from 'redux-persist/integration/react'
 import './styles/index.css';
+
 
 import Allroutes from '../src/config/allroutes';
 
@@ -29,12 +33,16 @@ function App() {
         <AppContext.Provider value={{routes}}>
             <JssProvider jss={jss} generateClassName={generateClassName}>
                 <Provider store={store}>
+
+        
+     
                     <Router history={history}>
                   
                         <Theme>
                      <Allroutes/>
                         </Theme>
                     </Router>
+           
                 </Provider>
             </JssProvider>
         </AppContext.Provider>

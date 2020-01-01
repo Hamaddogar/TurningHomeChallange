@@ -63,7 +63,22 @@ class LoginForm extends Component {
                 console.log(response);
                 if (response) {
                     store.dispatch(loginaction(response));
-                    this.props.history.push("/Profile")
+                     console.log(response)
+                      if(response.email==="hamadaliworkoncode@gmail.com")
+                      {
+
+                      this.props.history.push("/Profile")
+                       return;
+                      }
+                      else{
+                        {
+                            Alert.success("Congratulation ! You Have Login on  Apni Cheez Website", {
+                              position: 'bottom',
+                            })
+                          }
+
+                          this.props.history.push("/")
+                      }
                     
                     return;
                 }
@@ -161,18 +176,19 @@ class LoginForm extends Component {
                         </ValidatorForm>
                      <div><Link to="/forgot">Forgot password?</Link></div>   
 
-                        {/* <div className="socialButtonsHolder">
+                        <div className="socialButtonsHolder">
                             <div>
-                                <Button
+                            <a href="/auth/facebook">Login with Facebook</a>
+                                {/* <Button
                                     type="submit"
                                     variant="contained"
-                                    color="secondary"
+                                    
                                     className="w-full btnFacebook"
                                     aria-label="LOG IN"
                                     value="legacy"
                                 >
                                     Login with Facebook
-                          </Button>
+                          </Button> */}
                             </div>
                             <div>
                                 <Button
@@ -187,7 +203,7 @@ class LoginForm extends Component {
                                     Login with Google
                           </Button>
                             </div>
-                        </div> */}
+                        </div>
                     </CardContent>
 
                 </Card>

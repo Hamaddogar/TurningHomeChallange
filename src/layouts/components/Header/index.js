@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import TopBar from "./TopBar";
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
+import Slider  from "../../../components/slider/slider";
 
 class Header extends React.Component {
 
@@ -19,6 +20,8 @@ class Header extends React.Component {
             <div>
                 <TopBar />
                 <NavBar classes={classes} brand={brand} categories={categories} />
+                <br/><br/><br/>
+               
             </div>
         );
     }

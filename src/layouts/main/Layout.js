@@ -4,12 +4,15 @@ import {renderRoutes} from 'react-router-config'
 import {withStyles} from '@material-ui/core';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
+import Navbar from '../components/Header/NavBar/index';
 import Footer from '../components/Footer';
 import AppContext from '../../AppContext';
 import systemConfig from '../../config/system';
 import AuthDialog from "../components/AuthDialog";
 import CartDialog from '../components/CartDialog';
 import Toast from "../../components/Alerts/Toast";
+import Slider from '../../components/slider/slider'
+
 
 
 const styles = theme => ({
@@ -52,8 +55,13 @@ class Layout extends React.Component {
                     {
                         renderRoutes(routes)
                     }
+                   
                     {children}
+                   
+             
                     <Footer/>
+                 
+                  
                     <CartDialog />
                     <AuthDialog />
                     <Toast />
@@ -64,10 +72,11 @@ class Layout extends React.Component {
 }
 
 
-function mapStateToProps({products}) {
-    return {
-        products: products.all.data.rows,
-    }
-}
+// function mapStateToProps({products}) {
+//     return {
+//         products: products.all.data.rows,
+//     }
+// }
+// connect(mapStateToProps)
 
-export default withStyles(styles, {withTheme: true})(withRouter(connect(mapStateToProps)(Layout)));
+export default withStyles(styles, {withTheme: true})(withRouter((Layout)));

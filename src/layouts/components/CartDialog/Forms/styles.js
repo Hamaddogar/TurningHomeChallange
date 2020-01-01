@@ -1,10 +1,13 @@
 const styles = theme => ({
+    
     titleText: {
         fontFamily: 'Montserrat',
         fontSize: "24px",
         fontWeight: 700,
         color: theme.palette.dark
     },
+
+
     closeButton: {
         fontFamily: 'Montserrat',
         fontSize: "24px",

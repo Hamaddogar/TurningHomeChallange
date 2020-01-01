@@ -1,10 +1,10 @@
 const styles = theme => ({
     root: {
         backgroundColor: theme.palette.light,
-        paddingTop: "132px"
+        
     },
     container: {
-        minHeight: 600,
+        minHeight: 500,
         width: "100%",
         padding: "10px",
         display: "flex"

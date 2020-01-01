@@ -7,6 +7,33 @@ import styles from './styles';
 
 class SubscribeBar extends React.Component {
 
+
+
+    subscripedsubmitt=(e)=>{
+      e.preventDefault();
+        let   subscriber= this.subscriber.value;
+        
+
+		var option = {
+			method: "POST",
+			body: JSON.stringify({ subscriber }),
+			headers: {
+				"Content-Type": "application/json",
+			}
+
+		}
+        fetch("http://localhost:8080/api/subscriber",option)
+        .then((res)=>{
+    return(res.json())
+        }).then((res)=>{
+       console.log(res)
+        })
+
+
+
+    }
+
+
     render() {
 
         const {
@@ -16,7 +43,7 @@ class SubscribeBar extends React.Component {
 
         return (
             <div className={classes.subscribeBar}>
-
+                <form   onSubmit={this.subscripedsubmitt}>
                     <div className={classes.toolbar}>
                         <div className={classes.mainText}>Subscribe for Shop News, Updates and Special Offers</div>
                         <div style={{flex: 1, flexGrow: 1}} />
@@ -24,17 +51,25 @@ class SubscribeBar extends React.Component {
                             <div className={classes.searchIcon}>
                                 <EmailIcon/>
                             </div>
+                            
                             <InputBase
                                 placeholder="Your Email"
+                                type="email"
+                                                                   required={true}
+                                    inputRef={(subscriber) => this.subscriber= subscriber}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
+                            
                             />
+                           
                         </div>
-                        <Fab color="primary" size="small" className={classes.subscribeButton}><span className={classes.subscribeText}>Subscribe</span></Fab>
+                        <Fab color="primary" size="small"  type="submit"className={classes.subscribeButton}><span className={classes.subscribeText}>Subscribe</span></Fab>
                     </div>
+                    </form>
             </div>
+
         );
     }
 }

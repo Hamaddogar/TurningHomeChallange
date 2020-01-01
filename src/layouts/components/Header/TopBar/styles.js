@@ -94,8 +94,8 @@ const styles = theme => ({
         fontSize: "16px"
     },
     badge: {
-        fontWeight: 700,
-        fontSize: "16px",
+        fontWeight: 600,
+        fontSize: "14px",
         width: "24px",
         height: "24px",
         borderRadius: "24px"
@@ -117,6 +117,9 @@ const styles = theme => ({
         justifyContent: "center",
         paddingRight: "27px"
     },
+    movetocenter:{
+        paddingLeft:"126px"
+    },
     '@media (max-width: 768px)': {
       topBar: {
           display: "block",
@@ -127,7 +130,8 @@ const styles = theme => ({
       },
       divTopBar: {
         display: "block",
-        width: "100%"
+        width: "70%",
+        
       },
       iconContainer: {
         position: "absolute",

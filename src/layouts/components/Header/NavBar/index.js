@@ -17,19 +17,23 @@ import {searchaction} from '../../../../store/actions/search/searchaction';
 import './style.css';
 import {withRouter} from 'react-router-dom';
 import withWidth from "@material-ui/core/withWidth/withWidth";
-
+import Searcherror from '../../../../components/ErrorMessage/searchError'
+import Home from  '../../.././../screens/Home/index'
 
 class NavBar extends React.Component {
 
     state = {
-        mobileOpen: false
+        mobileOpen: false,
+        cartitem:[this.props.cartproduct],
+        cartData:null,
+        loading:false
     };
 
     handleDrawerToggle() {
         this.setState({ mobileOpen: !this.state.mobileOpen });
     }
 
-    componentDidMount(){
+ componentDidMount (){
       window.addEventListener('scroll', (event) => {
         const scrollpos = window.scrollY;
          if(scrollpos > 10){
@@ -42,6 +46,27 @@ class NavBar extends React.Component {
              })
          }
       });
+      setTimeout(() => {
+           this.setState({
+               loading:true
+           })
+      }, 1000);
+      
+      fetch("http://localhost:8080/api/cartshow")
+              .then(response => response.json())
+              .then((res) => {
+                  this.setState({
+                      cartData:res.data
+                  })
+                
+                
+              })
+              .catch((error) => console.log(error))
+   
+     
+        
+          
+            
     }
     SearchProduct=(e)=>{
      e.preventDefault()
@@ -60,6 +85,7 @@ class NavBar extends React.Component {
     fetch("http://localhost:8080/searchdata", option)
         .then((res) => {  return res.json() })
         .then((res) => {
+          console.log()
           console.log(res)
           if(res.data.length!==0)
           {
@@ -71,38 +97,42 @@ class NavBar extends React.Component {
            
       
           }
-        //    else{
-        //     // this.props.history.push('/errorMessage') ;
-        //    }
+           else{
+            this.props.history.push('/searcherror') ;
+           }
   
        })
   
   
         // .catch((error) => console.log(error))
   }
-
+ 
     
 
     render() {
 
-        const {
-            classes,
-            brand
-        } = this.props;
-
-        const brandComponent =
-        <Link to={'/'} className={classes.brand}>
-          {brand}
-        </Link>
+       
         
+        
+     
+             const {
+                 classes,
+                 brand
+                } = this.props;
+                
+                const brandComponent =
+                <Link to={'/'} className={classes.brand}>
+          {brand}</Link>
  
         return (
             <div>
                 <AppBar className={`mainHeaderHolder ${classes.navBar + ' ' + this.state.activeClass}`}>
+                
                     <Toolbar className={classes.toolbar}>
                         <div className={classes.flex}>
                             {brandComponent}
                         </div>
+                   
                         <Hidden mdDown>
                         <div className={`departments categories ${classes.linksContainer}`}>
                             <NavDropdown
@@ -113,7 +143,9 @@ class NavBar extends React.Component {
                                     onClick={() => {}}
                                     className="category"
                                 >
-                                    French
+                                  <Link to={`/Home`} className={classes.navDrawerLink} >
+                                      Home
+                                    </Link>
                                 </NavDropdown.Item>
 
                                 <NavDropdown.Item
@@ -155,7 +187,7 @@ class NavBar extends React.Component {
                                     onClick={() => {}}
                                     className="category"
                                 >
-                                    Christmas
+                                    Wedding
                                 </NavDropdown.Item>
                                 <NavDropdown.Item
                                     onClick={() => {}}
@@ -167,7 +199,7 @@ class NavBar extends React.Component {
                             </NavDropdown>
                         </div>
                         </Hidden>
-                        <Hidden mdDown>
+                       
                         <form onSubmit={this.SearchProduct}>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
@@ -187,15 +219,16 @@ class NavBar extends React.Component {
                             />
                         </div>
                         </form>
-                        </Hidden>
+                       
                         <Hidden mdDown>
                             <div className={classes.iconContainer} onClick={() => {this.props.showCart()}}>
                                 <Badge classes={{
                                     badge: classes.badge
                                 }}
                                     id="menuCartQuantity"
-                                    badgeContent={ Object.keys(this.props.cartproduct).length ==4 ? 1 :null}
-                                     
+                                    // badgeContent={  this.state.cartData.filter(( item,index)=>{ return item.loginuser===this.props.loginUser._id}).length!=0?this.state.cartData.filter(( item,index)=>{ return item.loginuser===this.props.loginUser._id}).length:null
+                                         badgeContent={5}
+                                // }
                                     color="danger">
                                     <img alt="Shopping Cart Icon" src="/assets/icons/shopping-cart-white.svg"/>
                                 </Badge>
@@ -222,15 +255,26 @@ class NavBar extends React.Component {
                         <Button classes={{
                                     root: classes.button
                                 }}>
-                                    <Link to={`/department/1`} className={classes.navDrawerLink} >
+                                    <Link to={'`/Home'} className={classes.navDrawerLink} >
                                         Regional
                                     </Link>
+                                   
+                                </Button>
+                                <Button classes={{
+                                    root: classes.button
+                                }}>
+                                    <Link to={`/department/1`} className={classes.navDrawerLink} >
+                                        Wedding
+                                    </Link>
+                                   
                                 </Button>
                         </Drawer>
                     </Hidden>
                 </AppBar>
             </div>
+
         );
+    
     }
 }
 
@@ -257,13 +301,15 @@ function mapDispatchToProps(dispatch) {
         showCart: alertActions.showCart
     }, dispatch);
 }
-function mapStateToProps({ cartreducers }) {
+function mapStateToProps({ cartreducers,loginreducers }) {
     debugger;
     return {
       cartproduct: cartreducers,
+      loginUser:loginreducers
   
     }
   }
+  
 const navBar= withRouter(NavBar);
 export default withWidth()(withStyles(styles, { withTheme: true })(withRouter(connect(mapStateToProps,mapDispatchToProps)(navBar))));
 

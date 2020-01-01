@@ -1,7 +1,7 @@
 const styles = theme => ({
     root: {
         backgroundColor: theme.palette.light,
-        paddingTop: "132px"
+     
     },
     controlContainer: {
         //padding: "20px",

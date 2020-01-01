@@ -13,6 +13,7 @@ import * as Actions from '../../../store/actions/alerts';
 import OrderForm from "./Forms/OrderForm";
 import Close from '@material-ui/icons/Close';
 import styles from './styles';
+import {Link} from "react-router-dom"
 
 function PaperComponent(props) {
     return (
@@ -65,7 +66,7 @@ class CartDialog extends Component {
                     <DialogContent style={{overflow: 'hidden'}}>
                         <div className="flex">
                             <div className="w-3/5 sm-12">
-                                <span className={classes.titleText}>1 items in Your Cart</span>
+                                <span className={classes.titleText}> items in Your Cart</span>
                             </div>
                             <div className="w-1/5 sm-12 flex justify-end">
                                 <span className={classes.totalText} onClick={this.handleClose.bind(this)}> <span id="cartTotalPriceValue"></span></span>
@@ -81,19 +82,20 @@ class CartDialog extends Component {
                             <div className="w-1/2">
                                 <Fab color="primary"
                                      onClick={activeStep === 0 ? this.handleClose.bind(this) : this.handlePrevious.bind(this)}
-                                     style={{borderRadius: 48, height: 48, width: 160}}
+                                     style={{borderRadius: 48, height: 48, width: 160 ,top:-42}}
                                      className={classes.cartButton}>
                                     <span
                                         className={classes.submitButtonText}>{activeStep === 0 ? 'Back to Shop' : 'Back'}</span></Fab>
                             </div>
                             <div className="w-1/2 flex justify-end">
                                 <Fab color="primary"
-                                     onClick={this.handleNext.bind(this)}
-                                     style={{borderRadius: 48, height: 48, width: 160}}
+                                     
+                                     style={{borderRadius: 48, height: 48, width: 160 ,top:-42}}
+
                                      className={classes.cartButton}>
-                                    { activeStep === 0 ?
-                                    <span className={classes.submitButtonText} id="btnCheckout">Checkout</span>
-                                    : <span className={classes.submitButtonText} id="btnNext">Next</span>}
+                                   
+                                   <Link to="/orderform">   <span className={classes.submitButtonText} id="btnCheckout">Next</span></Link>
+                                  
                                     </Fab>
                             </div>
                         </div>
