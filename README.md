@@ -1,57 +1,42 @@
-# Show now
+Turnig Home Challenge 
 
-## Important Note
-Before using this template, read the template guide [here](https://docs.google.com/document/d/1F68KceOe2lUi3KDVcBEcOxwwRsZDNLmkFFYrIAcV6BQ/edit?usp=sharing)
+ Task 1: Register User
+       i)Register User ( Email,Name,Password ) Validation
+       ii)  Already Existing User Cannot do Register Again yourself(Error Message  user Validation)
+       iii) Backend Save  confirmation Message  
+  ====================
+  
+Task 2: Login User
+       i) (Email,password) validation  (Front hand and Backend ) validation and show password
+       
+  ==================== 
+Task 3: Forgot Passowrd
+        i) Front hand Validation(Email)
+        ii) Email send Random generate Token (Token Will Expire After 12 Hour)
+        iii) Update password (New Password and confirm password ) validation 
+        iv) Display Message (Success or Error)
+  ====================
+ Task 4:Create  profile
+      i)create user profile (who one is login)  and logout 
+      ii) Add product (User can publish your product)
+      iii) Success and Error messgae Display (images save with Randomly Address)
+      iv)User can see (whose one he  published product)
+  ===================
+Task 5:Show product
+       i)product show with beautiful card
+       ii) Sale Show in persentage
+  ==================
+Task 6 : Detail of Product
+        i) Show detail of product (with detail images nad descrition )
+        ii)picture can show on full screen 
+  ==================
+Tske 7: Search product 
+      i)Product can search with Name 
+      ii)Search with slide(As you Slide change product will Show)
+   ==================================================================================================
 
-## Introduction
-
-> **Turing Front-end App Challenge template** is an e-commerce application template built using React that enables users shop for goods in the plaform. To complete this challenge, you need to implement all the requirement in the frontend challenge doc. You can modify the design to suit your purpose, but ensure you use all our default predefined Id and classes.
-Comments are added to the top of most of the component file which serve as a guide to what is expected from the finished product.
-
-The App has been built using React.
-
-The core libraries are as follows:
-
-* React
-* Redux
-* Redux Saga
-* React Material UI
-
-The app uses and advanced redux structure. All Network calls go via redux and redux saga. The global state is then updated. All components simply listen to the state or send a request for data. The UI is state driven. The full redux store can be found in the "store" folder under the "src directory".
-
-The UI is based primarily on Material UI. Tailwind CSS is used for grids and responsiveness. Other thatn that, custom styling is used. The theming is quite an advanced structure in itself. The Layout and Theme is selected based on the route. This can be seen in th "layouts" directory in the "src" directory. All Icons are SVG or Font Icons so scaling should not be an issue.
 
 
-## Scripts to Note
+ 
 
-In the project directory, you can run:
-
-
-### `yarn start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-
-## Docker
-
-* Build image
-
-`docker build -t react_challenge .`
-
-* Run container
-`docker run --rm -p 8000:80 react_challenge`
+      
